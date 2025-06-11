@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Cấu hình ID của Google Sheet và API Key từ biến môi trường
-const SHEET_ID = "17cwOnAQANqICa0dA-KpWVvV_vWdYRwRuB4yrKDeJ8X4";
+const SHEET_ID = "API KEY";
 const API_KEY = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY;
 
 // Hàm lấy danh sách các tab (sheet) trong Google Sheets

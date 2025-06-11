@@ -33,7 +33,7 @@ API_CALL_DELAY = 1  # Độ trễ giữa các yêu cầu API (giây)
 
 # --- Tải biến môi trường từ file .env ---
 load_dotenv()
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyDx-IzX6g-zHtukS9QTQz5nBSfpJXq77P0')  # Lấy API key từ biến môi trường, hoặc dùng giá trị mặc định
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'API KEY')  # Lấy API key từ biến môi trường, hoặc dùng giá trị mặc định
 
 # --- Kiểm tra API key ---
 if not GEMINI_API_KEY:
