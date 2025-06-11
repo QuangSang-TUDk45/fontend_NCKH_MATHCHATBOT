@@ -142,11 +142,6 @@ VITE_GOOGLE_SHEETS_API_KEY=your_google_sheets_api_key
 3. Thực hiện thay đổi
 4. Gửi pull request
 
-## Tài liệu bổ sung
-
-* [Tài liệu Frontend](./frontend/README.md)
-* [Tài liệu Backend](./backend/README.md)
-
 ## Yêu cầu hệ thống
 
 * Node.js 16 trở lên cho frontend
