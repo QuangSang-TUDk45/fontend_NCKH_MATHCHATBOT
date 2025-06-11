@@ -1,0 +1,97 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bố cục */
+body {
+  background-color: #1a1a1a; /* Nền đen cho toàn bộ giao diện */
+}
+
+.max-w-6xl {
+  max-width: 1200px;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  word-wrap: break-word;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.chat-bubble.user {
+  background-color: #3b82f6;
+  color: white;
+  margin-left: auto;
+}
+
+.chat-bubble.bot {
+  background-color: #4b5563;
+  color: #d1d5db;
+}
+
+/* Hiệu ứng chuyển màu */
+/* Định nghĩa keyframes cho hiệu ứng gradient chuyển động ngang */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%; /* Gradient bắt đầu từ trái */
+  }
+  100% {
+    background-position: 200% 50%; /* Gradient di chuyển sang phải */
+  }
+}
+
+/* Hiệu ứng chuyển động từ trên xuống */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+/* Áp dụng gradient và animation cho lớp animate-colorChange */
+.animate-colorChange {
+  background: linear-gradient(
+    to right,
+    rgba(157, 43, 103, 0.9) 0%,
+    /* Hồng đậm */ rgba(255, 105, 180, 0.9) 50%,
+    /* Hồng nhạt */ rgba(157, 43, 103, 0.9) 100% /* Quay lại hồng đậm */
+  );
+  background-size: 200% 100%; /* Kích thước gradient gấp đôi để tạo hiệu ứng di chuyển */
+  -webkit-background-clip: text; /* Áp dụng gradient cho văn bản */
+  -webkit-text-fill-color: transparent; /* Làm văn bản trong suốt để hiển thị gradient */
+  animation: gradientShift 3s linear infinite; /* Chuyển động trong 3 giây, lặp vô hạn */
+}
+
+/* Chức năng */
+/* Tùy chỉnh thanh cuộn */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Chiều rộng nhỏ như trong hình */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Track trong suốt */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d1d1; /* Màu xám nhạt cho thumb */
+  border-radius: 10px; /* Bo góc */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0; /* Màu đậm hơn khi hover */
+}
+
+/* Tùy chỉnh cho Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d1d1 transparent;
+}
