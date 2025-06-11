@@ -1,5 +1,6 @@
 ## Install lib
 
+```bash
 npm create vite@latest
 npm i
 npm i react-router-dom
@@ -7,146 +8,214 @@ npm install @reduxjs/toolkit
 npm install react-redux
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
+```
 
-# nếu lỗi tailwind
+Nếu lỗi tailwind:
 
+```bash
 npm uninstall tailwindcss postcss autoprefixer
 npm install -D tailwindcss@3.3.3 postcss autoprefixer
 npx tailwindcss init -p
+```
 
+Cài thêm:
 
+```bash
 npm install html-to-md
 pip install markdown pykatex
----
-# React
-- Vai trò: Thư viện chính để xây dựng UI(Giao diện người dùng) theo kiểu components-based(dựa trên các thành phần)
-- Tại sao cần: Cung cấp các công cụ cơ bản như: useState, useEffect, useContext,...
-- Giải thích:
-  - react: "Bộ não" để tạo giao diện(UI)
-  - Cho phép bạn viết component - từng khối nhỏ giao diện như nút bấm, bảng, form,...
-  - Giúp cập nhật giao diện "tự động" khi dữ liệu thay đổi
-
-
-# React-dom/client
-- Vai trò: Kết nối React với DOM thật trong trình duyệt
-- Tại sao cần DOM:
-Đoạn ReactDOM.createRoot(document.getElementById("root")).render(<App />) là cách để render ứng dụng React vào trang HTML
-- Giải thích:
-  - react-dom/client "Cầu nối" giữa React và trang wed thật
-  - Giúp hiển thị giao diện React vào trang wed HTML(nơi có div id ="root")
-
-# .App.jsx
-- Vai trò: Thành phần gốc của ứng dụng React, chứa các component con khác
-- Tại sao cần: Là nơi định nghĩa layout tổng thể hoặc các route con
-- Giải thích:
-  - Thành phần chính (component gốc): Là nơi bắt đầu hiển thị giao diện của bạn
-  - Bạn sẽ "thiết kế giao diện chính ở đây", hoặc chi nhỏ thành nhiều phần
-
-# React-router-dom
-- Vai trò: Thư viện định tuyến (routing) cho React trong môi trường trình duyệt
-- Các thành phần chính được dùng:
-  - createBrowserRouter: Tạo router dựa trên URL trình duyệt
-  - RouteProvider: Dùng để bọc toàn bộ ứng dụng với routing context.
-  - Navigate: Dùng để chuyển hướng người dùng (redirect)
-- Giải thích:
-  - react-router-dom: Điều hướng giữa các trang trong React(SPA)
-  - Giúp bạn làm wed nhiều trang như: /home, /about,/login,...
-  - Không cần reload trang khi chuyển trang (rất mượt)
-  - createBrowserRouter: định nghĩa các "đường dẫn"
-  - routerProvider: bọc toàn bộ app để sử dụng router
-  - Navigate: Chuyển trang bằng code
-
-# React-redux
-- Vai trò: Kết nối Redux store với ứng dụng React
-- Tại sao cần: Provider giúp truyền store xuống toàn bộ component trong ứng dụng, giúp mọi component có thể truy cập hoặc cập nhật trạng thái toàn cục
-- Giải thích:
-  - Quản lý "trạng thái chung" của toàn bộ ứng dụng
-  - bạn có thể hình dung như: mọi component đều cần chia sẻ 1 số dữ liệu  - Redux giúp quản lý dữ liệu đó ở 1 nơi duy nhất
-  - Provider  giúp các thành phần trong app kết nối tới Redux store
+```
 
 ---
-# ChatDetail.jsx
 
-##  Hook và hàm từ trong React
-- useState:Tạo biến lưu trữ dữ liệu bên trong component(vd: nội dung tin nhắn)
-- useEffect: Chạy một đoạn code khi component được render, thường dung để "gọi API hoặc thiết lập dữ liệu ban đầu".
-- useCallback: Tối ưu hiệu suất, ghi nhớ hàm nếu không có gì thay đổi
-- useRef: tạo một biến không bị reset lại khi component re-reder(thường dùng để thao tác DOM, như scroll xuống cuối khung chat)
+## React
 
-## Hàm điều hướng từ React Router
-- useParams: Lấy "tham số từ URL", vd: /chat/123 thì lấy được 123
-- useNavigate: Giúp chuyển trang bằng code, vd: navigate('/home')
+React là thư viện chính để xây dựng UI (giao diện người dùng) theo mô hình component-based (dựa trên các thành phần). Cung cấp các công cụ cơ bản như `useState`, `useEffect`, `useContext`,...
 
-## Redux - quản lý state toàn ứng dụng
-- useDispatch: Gửi hành động(action) để thay đổi Redux store
-- useSelector: Lấy dữ liệu từ Redux store
-- addMessage, setNameChat, fetchSheetData, selectSheetData: Đây là hàm định nghĩa trong chatSlice.js - một phần của Redux logic để xử lý dữ liệu chat
-
-## Thự viện tạo ID tự động
-- uuidv4() dùng đẻ tạo một ID duy nhất(unique), thường dùng cho mỗi tin nhắn
-
-## Component riêng
-- Sidebar: là thanh bên(menu trái) để chọn các cuộc trò chuyện
-- MathKeyBoard: là phím gõ công thức toán học
-
-## Gọi API từ file dịch vụ
-- Gemini: API kết nối AI Google Gemini(dùng sãn)
-- chatWithBot: Hàm gọi chatbot chính (Tự định nghĩa)
-- identifyTopic: Xác định chủ đề của đoạn chat
-
-## Drag anh Drop - kéo thả tệp
-- Thư viện hỗ trợ người dung kéo tệp vào khung chat, vd để gửi hình ảnh hoặc file
-- useDropzone là hook dùng để xử lý thao tác kéo thả
-
-## Hiển thị nội dung markdown
-- component có khả năng render Markdown + công thức toán học
-- Thường dùng để hiện thị nội dung từ bot hoặc người dùng một cách rõ ràng, đẹp
+React giống như “bộ não” giúp tạo và quản lý giao diện. Cho phép bạn viết các component nhỏ như nút bấm, bảng, form,... Giao diện sẽ tự động cập nhật mỗi khi dữ liệu thay đổi.
 
 ---
-# MarkdownLatexProcessor.jsx
-## Turndown
-- Biến HTML thành Markdown
-- Turndown là một thư viện giúp chuyển đổi nội dung HTML(thường do AI hoặc rich text edit tạo ra) thành định dạng markdown
 
-## react-markdown
-- Hiển thị nội dung markdown trong react
-- Cho phep bạn "render chuỗi markdown thành HTML" trong giao diện React
+## React-dom/client
 
-## remark - math
-- Hổ trợ công thức toán học(Latex) trong markdown
-- Đây là plugin cho ReactMarkdown để hiểu cú pháp. vd: $a^2 + b^2 = c^2$
+Là cầu nối giữa React và DOM thực của trình duyệt. Câu lệnh `ReactDOM.createRoot(document.getElementById("root")).render(<App />)` giúp React render toàn bộ ứng dụng vào thẻ `div#root` trong file HTML.
 
-## rehype-katex
-- Hiển thị công thức toán học bằng Katex
-- Đây là plugin giúp render công thức toán học ra HTML đẹp như trong sách giáo khoa
-- Nó hoạt đọng sau remarkMath 
+---
 
-## katex/dist/katex.min.css
-- CSS cho Katex - để hiển thị đúng style cho công thức toán học
-- import CSS giúp công thức toán học hiển thị đẹp
-- Nếu quên, công thức có thể hiện sai, hoặc chỉ thấy plain text
+## App.jsx
 
-## useMemo from react
-- Hook tối ưu hiệu suất cho React
-- useMemo() dùng để tính toán và nhớ lại giá trị, tránh tính lại mỗi lần component render
-- Dùng khi bạn có xử lý nặng (vd: convert Markdown, phân tích HTML...)
+Là thành phần gốc của ứng dụng React. Đây là nơi định nghĩa layout tổng thể hoặc chứa các định tuyến (route). App.jsx là điểm bắt đầu hiển thị UI của bạn.
 
-# Tổng kết
-turndown                 - HTML ->  Markdown
-react-markdown           - Markdown -> HTML(hiển thị trong React)
-remark-math              - Hiểu công thức Toán trong Markdown($...$) 
-rehype-katex             - Hiển thị công thức Toán bằng Katex
-katex.min.css            - Giao diện cho Katex
-useMemo                  - Ghi nhớ giá trị tính toán, tránh re-render
+---
 
-# fetchGoogleSheets.js
-## axios là gì?
-- `axios` là một thư viện giúp bạn "giao tiếp với server" bằng các phương thức như sau:
-  - GET: lấy dữ liệu
-  - POST: gửi dữ liệu
-  - PUT: cập nhật dữ liệu
-  - DELETE: xóa dữ liệu
-- Nó giống như fetch nhưng dễ dùng hơn có nhiều tính năng hơn
+## React-router-dom
 
+Thư viện định tuyến cho ứng dụng React trên trình duyệt. Cho phép điều hướng giữa các "trang" như `/home`, `/about`, `/login` mà không cần reload. Sử dụng `createBrowserRouter`, `RouterProvider`, và `Navigate`.
+
+---
+
+## React-redux
+
+Cung cấp cách kết nối Redux store với các component trong React. `Provider` giúp chia sẻ trạng thái toàn cục (global state) cho toàn ứng dụng. Mọi component có thể đọc và ghi dữ liệu thông qua Redux store.
+
+---
+
+## ChatDetail.jsx
+
+### Các Hook của React
+
+* `useState`: Tạo biến lưu dữ liệu nội bộ trong component.
+* `useEffect`: Chạy khi component render, thường dùng gọi API hoặc khởi tạo dữ liệu.
+* `useCallback`: Ghi nhớ hàm nếu dependency không thay đổi (tối ưu hiệu suất).
+* `useRef`: Tạo biến không reset khi re-render, thường để thao tác DOM như scroll.
+
+### Hook từ React Router
+
+* `useParams`: Lấy tham số từ URL, ví dụ `/chat/123` sẽ lấy được `123`.
+* `useNavigate`: Chuyển trang bằng code.
+
+### Redux
+
+* `useDispatch`: Gửi hành động để cập nhật store.
+* `useSelector`: Lấy dữ liệu từ Redux store.
+* `addMessage`, `setNameChat`, `fetchSheetData`, `selectSheetData`: Các hàm logic xử lý trạng thái từ `chatSlice.js`.
+
+### Tạo ID tự động
+
+* `uuidv4()`: Tạo một ID duy nhất cho mỗi tin nhắn.
+
+### Các component riêng
+
+* `Sidebar`: Thanh điều hướng bên trái.
+* `MathKeyBoard`: Bàn phím gõ công thức toán học.
+
+### Gọi API
+
+* `Gemini`: Kết nối AI Gemini.
+* `chatWithBot`: Hàm chính gọi chatbot.
+* `identifyTopic`: Xác định chủ đề đoạn chat.
+
+### Drag and Drop
+
+* `useDropzone`: Hook xử lý kéo thả file (ảnh, tài liệu) vào chat.
+
+### Hiển thị Markdown
+
+* Dùng để render nội dung rõ ràng, có hỗ trợ công thức toán học.
+
+---
+
+## MarkdownLatexProcessor.jsx
+
+### Turndown
+
+Chuyển đổi HTML thành Markdown. Hữu ích khi AI trả về HTML và bạn muốn chuyển nó về định dạng đơn giản hơn.
+
+### react-markdown
+
+Dùng để render chuỗi Markdown trong React thành HTML thật sự trên trình duyệt.
+
+### remark-math
+
+Hiểu cú pháp toán học viết bằng LaTeX trong Markdown như `$a^2 + b^2 = c^2$`.
+
+### rehype-katex
+
+Render công thức toán học đẹp mắt bằng thư viện KaTeX.
+
+### katex.min.css
+
+CSS đi kèm với KaTeX giúp công thức hiển thị đúng chuẩn. Nếu thiếu file CSS, công thức sẽ hiển thị sai.
+
+### useMemo (React)
+
+Hook tối ưu hiệu suất. Dùng để lưu lại giá trị tính toán như chuyển HTML sang Markdown để không bị tính lại mỗi lần render.
+
+### Tổng kết:
+
+* **Turndown**: HTML → Markdown
+* **react-markdown**: Markdown → HTML trong React
+* **remark-math**: Hiểu công thức toán học viết bằng `$...$`
+* **rehype-katex**: Render công thức toán học bằng KaTeX
+* **katex.min.css**: Hiển thị công thức đúng định dạng
+* **useMemo**: Ghi nhớ kết quả xử lý nặng, tránh re-render
+
+---
+
+
+
+## Axios
+
+`axios` là thư viện HTTP giúp giao tiếp frontend ↔ backend.
+Các phương thức chính: `GET`, `POST`, `PUT`, `DELETE`.
+Dễ dùng hơn `fetch` và có nhiều tính năng hơn.
+
+---
+
+## Kiến trúc tích hợp API
+
+### Giao tiếp Frontend - Backend
+
+Ứng dụng giao tiếp theo mô hình RESTful API thông qua 2 file chính:
+
+---
+
+### `frontend/src/services/apiChatbot.js`
+
+Xử lý tất cả các cuộc gọi từ frontend đến backend:
+
+```js
+chatWithBot(query)         // POST /chat
+identifyTopic(question)    // POST /identify-topic
+```
+
+Sử dụng fetch API, xử lý lỗi, và định dạng phản hồi. Kết nối tới `http://localhost:5000` hoặc qua ngrok để test từ xa.
+
+---
+
+### `backend/api_server.py`
+
+Máy chủ Flask chứa các API:
+
+```python
+@app.route('/chat', methods=['POST'])           # Gọi AI
+@app.route('/identify-topic', methods=['POST']) # Nhận diện chủ đề
+```
+
+Hỗ trợ CORS, tích hợp AI Gemini, sử dụng sentence transformers cho tìm kiếm ngữ nghĩa, phân tích chủ đề và tạo phản hồi.
+
+---
+
+### Luồng dữ liệu
+
+1. **Frontend gửi yêu cầu** → `apiChatbot.js` POST đến backend
+2. **Backend xử lý** → bằng mô hình AI và cơ sở dữ liệu Excel
+3. **Trả phản hồi về Frontend** → giao diện cập nhật
+
+---
+
+### Bảo mật
+
+* Kiểm soát truy cập CORS
+* Quản lý API key qua biến môi trường
+* Xử lý lỗi, xác thực
+* Giới hạn tốc độ gọi API
+
+---
+
+### Hiệu suất
+
+* Tối ưu mô hình embedding
+* Caching thông minh
+* Gom nhóm các cuộc gọi API
+* Cơ chế retry lỗi
+
+---
+
+### Cải tiến tương lai
+
+* Hỗ trợ WebSocket để chat thời gian thực
+* Tăng cường bảo mật nâng cao
+* Lưu cache câu trả lời AI
+* Cân bằng tải (load balancing)
 
 
